@@ -1,11 +1,13 @@
 import { useRef, useState } from 'react'
-import { OrbitControls } from '@react-three/drei'
+import { Environment, OrbitControls } from '@react-three/drei'
 import './App.css'
 import { Canvas } from '@react-three/fiber'
 import Box from './components/Box.tsx'
 import Floor from './components/Floor.tsx'
 import Camera from './components/Camera.tsx'
 import { Physics, RigidBody } from '@react-three/rapier'
+import Grid from './components/Grid.tsx'
+import TileObjects from './components/TileObjects.tsx'
 function App() {
   const tiles:any = []
     tiles.fill(0,0,100)
@@ -15,24 +17,26 @@ function App() {
     
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
-       
+    
+    <ambientLight/>
     <Canvas >
+    <Environment preset="night" background />
+    <pointLight position={[10, 10, 10]} />
     <OrbitControls 
       minDistance={5} // Minimum zoom level
       maxDistance={20} 
       enableRotate={true} 
-     
-        
         />
         <Physics>
 
    <Floor position={[0,0,0]}/>
     <Camera/>
     
-    <RigidBody>
+    {/*<RigidBody>
     <Box  position={[-0.75, 0.1, 1]} name="A" />
     <Box  position={[0.75, 0.1, 10]} name="B" />
-    </RigidBody>
+    </RigidBody>*/}
+    <TileObjects/>
     </Physics>
   </Canvas>
   </div>
