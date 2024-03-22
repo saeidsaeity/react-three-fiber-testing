@@ -16,7 +16,7 @@ function TileObjects(props:PropsWithChildren) {
     const emptytile=[]
     const [selectedTile, setSelectedTile] = useState<any>(null);
     const offset = useRef<THREE.Vector3>(new THREE.Vector3());
-    const [hovered, setHovered] = useState(false);
+    const [hovered, setHovered] = useState({});
     const createGlowMaterial = () => {
       return new THREE.MeshBasicMaterial({
         color: 0xffff00,
@@ -36,9 +36,9 @@ function TileObjects(props:PropsWithChildren) {
         emptytile.push(
         <RigidBody type="dynamic" >
           <DragControls key={`Rigid-${x}-${y}`} >
-              <Select enabled={hovered}>
-              <primitive ref={tileRefs.current[x]} onPointerOver={(event) => {console.log(event); setHovered(true)}}
-      onPointerOut={(event) => {console.log(event); setHovered(false)}} key={`${x}-${y}`} object={tileA.scene.clone()} position={[x * 2.5, 0, y * 2.5]} />
+              <Select enabled={hovered[`${x}-${y}`]}>
+              <primitive ref={tileRefs.current[x]} onPointerOver={(event) => {setHovered({[`${x}-${y}`]:true})}}
+      onPointerOut={(event) => {setHovered({[`${x}-${y}`]:false})}} key={`${x}-${y}`} object={tileA.scene.clone()} position={[x * 2.5, 0, y * 2.5]} />
             </Select>
           </DragControls>
           </RigidBody>)
