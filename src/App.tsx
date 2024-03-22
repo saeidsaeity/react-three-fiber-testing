@@ -36,7 +36,9 @@ function App() {
     <Box  position={[-0.75, 0.1, 1]} name="A" />
     <Box  position={[0.75, 0.1, 10]} name="B" />
     </RigidBody>*/}
+    
     <TileObjects/>
+    
     </Physics>
   </Canvas>
   </div>
