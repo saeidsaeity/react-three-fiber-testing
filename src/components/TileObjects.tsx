@@ -37,7 +37,7 @@ function TileObjects(props:PropsWithChildren) {
         <RigidBody type="dynamic" >
           <DragControls key={`Rigid-${x}-${y}`} >
               <Select enabled={hovered[`${x}-${y}`]}>
-              <primitive ref={tileRefs.current[x]} onPointerOver={(event) => {setHovered({[`${x}-${y}`]:true})}}
+              <primitive  scale={[1, 1, 1]} ref={tileRefs.current[x]} onPointerOver={(event) => {setHovered({[`${x}-${y}`]:true})}}
       onPointerOut={(event) => {setHovered({[`${x}-${y}`]:false})}} key={`${x}-${y}`} object={tileA.scene.clone()} position={[x * 2.5, 0, y * 2.5]} />
             </Select>
           </DragControls>

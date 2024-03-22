@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import { Environment, OrbitControls } from '@react-three/drei'
+import { Environment, OrbitControls, PointerLockControls } from '@react-three/drei'
 import './App.css'
 import { Canvas } from '@react-three/fiber'
 import Box from './components/Box.tsx'
@@ -17,18 +17,19 @@ function App() {
     
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
-    
+     
     <ambientLight/>
     <Canvas >
+  
     <Environment preset="night" background />
     <pointLight position={[10, 10, 10]} />
     <OrbitControls 
       minDistance={5} // Minimum zoom level
       maxDistance={20} 
-      enableRotate={true} 
+      enableRotate={false} 
         />
         <Physics>
-
+    <Grid/>
    <Floor position={[0,0,0]}/>
     <Camera/>
     

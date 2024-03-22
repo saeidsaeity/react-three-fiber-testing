@@ -1,8 +1,9 @@
 import { CuboidCollider, RigidBody } from '@react-three/rapier'
-import { PropsWithChildren } from 'react'
+import { PropsWithChildren, useRef } from 'react'
 
 
 export default function Floor(props:PropsWithChildren){
+    const gridRef = useRef();
     
     return (
         <RigidBody type="Static">
@@ -11,7 +12,7 @@ export default function Floor(props:PropsWithChildren){
         <meshStandardMaterial color={'blue'} /> {/* Adjust the color as needed */}
         
        <planeGeometry args={[100,100]} position={[0,0,0]} ></planeGeometry>
-       <gridHelper args={[100, 100, 0xff0000, 'teal']} rotation={[-Math.PI / 2, 0, 0]} />
+       <gridHelper args={[100, 50, 0xff0000, 'teal']} rotation={[-Math.PI / 2, 0, 0]} />
         
       </mesh>
      
